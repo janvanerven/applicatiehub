@@ -8,4 +8,3 @@ uploads/
 !AuthSetup.md
 .git
 .gitignore
-drizzle/
