@@ -43,14 +43,11 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
     tokens = await client.validateAuthorizationCode(code, codeVerifier);
   } catch (e) {
     if (e instanceof OAuth2RequestError) {
-      console.error('[callback] OAuth2RequestError:', e.message, e.description);
       throw error(400, `OAuth-fout: ${e.message}`);
     }
     if (e instanceof ArcticFetchError) {
-      console.error('[callback] ArcticFetchError — cannot reach IdP:', e.message, e.cause);
       throw error(502, 'Kan de identity provider niet bereiken.');
     }
-    console.error('[callback] Unexpected error during token exchange:', e);
     throw e;
   }
 
@@ -62,12 +59,6 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
   // Normalize both sides — Authentik includes a trailing slash in the iss claim
   // but the configured AUTHENTIK_ISSUER_URL may or may not have one.
   const normalize = (u: string) => u.replace(/\/$/, '');
-  // TEMP DEBUG — remove after diagnosing
-  console.error('[callback] iss claim  :', payload.iss);
-  console.error('[callback] issuerUrl  :', issuerUrl);
-  console.error('[callback] aud claim  :', payload.aud);
-  console.error('[callback] clientId   :', clientId);
-  console.error('[callback] exp        :', payload.exp, '| now:', Math.floor(Date.now() / 1000));
   if (typeof payload.iss !== 'string' || normalize(payload.iss) !== normalize(issuerUrl)) {
     throw error(502, 'Token verificatie mislukt: onverwachte issuer.');
   }
