@@ -56,7 +56,10 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
   const payload = decodeIdToken(tokens.idToken()) as Record<string, unknown>;
 
   // Validate issuer, audience, and expiry claims
-  if (typeof payload.iss !== 'string' || payload.iss !== issuerUrl) {
+  // Normalize both sides — Authentik includes a trailing slash in the iss claim
+  // but the configured AUTHENTIK_ISSUER_URL may or may not have one.
+  const normalize = (u: string) => u.replace(/\/$/, '');
+  if (typeof payload.iss !== 'string' || normalize(payload.iss) !== normalize(issuerUrl)) {
     throw error(502, 'Token verificatie mislukt: onverwachte issuer.');
   }
   const aud = payload.aud;
