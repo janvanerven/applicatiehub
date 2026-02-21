@@ -23,6 +23,9 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v5
+        env:
+          # Show full build output so failures are readable in the Actions log
+          BUILDKIT_PROGRESS: plain
         with:
           context: .
           push: true

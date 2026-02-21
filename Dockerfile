@@ -6,7 +6,10 @@ WORKDIR /app
 RUN apk add --no-cache python3 make g++
 
 COPY package*.json ./
-RUN npm ci
+# Use npm install (not npm ci) so npm resolves the correct platform-specific
+# optional binaries (e.g. @tailwindcss/oxide-linux-x64-musl) even when the
+# lock file was generated on a different OS (Windows / macOS).
+RUN npm install --no-audit
 
 COPY . .
 RUN npm run build
