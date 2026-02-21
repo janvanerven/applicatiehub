@@ -43,11 +43,14 @@ export const GET: RequestHandler = async ({ url, cookies }) => {
     tokens = await client.validateAuthorizationCode(code, codeVerifier);
   } catch (e) {
     if (e instanceof OAuth2RequestError) {
+      console.error('[callback] OAuth2RequestError:', e.message, e.description);
       throw error(400, `OAuth-fout: ${e.message}`);
     }
     if (e instanceof ArcticFetchError) {
+      console.error('[callback] ArcticFetchError — cannot reach IdP:', e.message, e.cause);
       throw error(502, 'Kan de identity provider niet bereiken.');
     }
+    console.error('[callback] Unexpected error during token exchange:', e);
     throw e;
   }
 
