@@ -19,9 +19,15 @@
 </script>
 
 <div class="flex min-h-screen flex-col">
-  <header class="border-b border-forest-200 bg-white shadow-sm dark:border-forest-800 dark:bg-forest-900">
+  <header
+    class="sticky top-0 z-50 border-b border-forest-200/60 bg-white/90 shadow-sm backdrop-blur-md dark:border-forest-800/50 dark:bg-forest-950/90"
+  >
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-      <a href="/" class="flex items-center gap-2 text-xl font-bold text-forest-700 dark:text-forest-300">
+      <!-- Logo -->
+      <a
+        href="/"
+        class="flex items-center gap-2 text-xl font-black text-forest-700 transition-colors hover:text-forest-600 dark:text-forest-300 dark:hover:text-forest-200"
+      >
         <span aria-hidden="true">🌲</span>
         Applicatie Hub
       </a>
@@ -33,7 +39,7 @@
             href={item.href}
             target={item.isExternal ? '_blank' : undefined}
             rel={item.isExternal ? 'noopener noreferrer' : undefined}
-            class="rounded-md px-3 py-1.5 text-sm text-stone-600 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-300 dark:hover:bg-forest-800 dark:hover:text-stone-100"
+            class="rounded-full px-4 py-1.5 text-sm font-semibold text-stone-600 transition-colors hover:bg-forest-50 hover:text-forest-800 dark:text-stone-300 dark:hover:bg-forest-800 dark:hover:text-stone-100"
           >
             {item.label}
           </a>
@@ -43,7 +49,7 @@
         <button
           onclick={toggleDark}
           aria-label={dark ? 'Schakel naar licht modus' : 'Schakel naar donker modus'}
-          class="ml-1 rounded-md p-1.5 text-stone-500 hover:bg-stone-100 hover:text-stone-700 dark:text-stone-400 dark:hover:bg-forest-800 dark:hover:text-stone-200"
+          class="ml-1 rounded-full p-2 text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-700 dark:text-stone-400 dark:hover:bg-forest-800 dark:hover:text-stone-200"
         >
           {#if dark}
             <!-- Sun icon -->
@@ -71,17 +77,19 @@
           {#if data.menuItems.length > 0}
             <span class="ml-1 text-stone-300 dark:text-stone-600">|</span>
           {/if}
-          <span class="px-2 text-sm text-stone-600 dark:text-stone-300">{data.user.name}</span>
+          <span class="px-2 text-sm font-semibold text-stone-600 dark:text-stone-300"
+            >{data.user.name}</span
+          >
           <a
             href="/admin"
-            class="rounded-md bg-forest-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-forest-700"
+            class="rounded-full bg-forest-600 px-4 py-1.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-forest-700"
           >
             Beheer
           </a>
           <form method="post" action="/auth/logout" class="ml-1">
             <button
               type="submit"
-              class="text-sm text-stone-500 hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
+              class="text-sm font-semibold text-stone-500 transition-colors hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
             >
               Uitloggen
             </button>
@@ -89,7 +97,7 @@
         {:else if data.menuSettings.showLoginLink}
           <a
             href="/auth/login"
-            class="ml-1 rounded-md border border-forest-300 px-3 py-1.5 text-sm font-medium text-forest-700 hover:bg-forest-50 dark:border-forest-600 dark:text-forest-300 dark:hover:bg-forest-800"
+            class="ml-1 rounded-full border-2 border-forest-300 px-4 py-1.5 text-sm font-bold text-forest-700 transition-colors hover:bg-forest-50 dark:border-forest-600 dark:text-forest-300 dark:hover:bg-forest-800"
           >
             Inloggen
           </a>
@@ -102,8 +110,10 @@
     {@render children()}
   </main>
 
-  <footer class="border-t border-forest-200 bg-white py-6 dark:border-forest-800 dark:bg-forest-900">
-    <p class="text-center text-sm text-stone-400 dark:text-stone-500">
+  <footer
+    class="border-t border-forest-200 bg-white py-8 dark:border-forest-800 dark:bg-forest-950"
+  >
+    <p class="text-center text-sm font-semibold text-stone-400 dark:text-stone-600">
       Applicatie Hub &copy; {new Date().getFullYear()}
     </p>
   </footer>
