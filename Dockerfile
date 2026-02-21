@@ -12,6 +12,9 @@ COPY package*.json ./
 RUN npm install --no-audit
 
 COPY . .
+# SvelteKit's post-build analyser imports the server bundle, which executes
+# db/index.ts and opens the SQLite database. The data dir must exist first.
+RUN mkdir -p /app/data /app/uploads
 RUN npm run build
 
 # Prune dev dependencies
