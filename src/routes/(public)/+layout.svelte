@@ -26,7 +26,7 @@
       <!-- Logo -->
       <a
         href="/"
-        class="flex items-center gap-2 text-xl font-black text-forest-700 transition-colors hover:text-forest-600 dark:text-forest-300 dark:hover:text-forest-200"
+        class="flex items-center gap-2 text-xl font-bold text-forest-700 transition-colors hover:text-forest-600 dark:text-forest-300 dark:hover:text-forest-200"
       >
         <span aria-hidden="true">🌲</span>
         Applicatie Hub
@@ -39,7 +39,7 @@
             href={item.href}
             target={item.isExternal ? '_blank' : undefined}
             rel={item.isExternal ? 'noopener noreferrer' : undefined}
-            class="rounded-full px-4 py-1.5 text-sm font-semibold text-stone-600 transition-colors hover:bg-forest-50 hover:text-forest-800 dark:text-stone-300 dark:hover:bg-forest-800 dark:hover:text-stone-100"
+            class="rounded-full px-4 py-1.5 text-sm font-medium text-stone-600 transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-forest-50 hover:text-forest-700 dark:text-stone-300 dark:hover:bg-forest-800 dark:hover:text-stone-100"
           >
             {item.label}
           </a>
@@ -49,7 +49,7 @@
         <button
           onclick={toggleDark}
           aria-label={dark ? 'Schakel naar licht modus' : 'Schakel naar donker modus'}
-          class="ml-1 rounded-full p-2 text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-700 dark:text-stone-400 dark:hover:bg-forest-800 dark:hover:text-stone-200"
+          class="ml-1 rounded-full p-2 text-stone-500 transition-all duration-[250ms] hover:bg-stone-100 hover:text-stone-700 dark:text-stone-400 dark:hover:bg-forest-800 dark:hover:text-stone-200"
         >
           {#if dark}
             <!-- Sun icon -->
@@ -77,27 +77,34 @@
           {#if data.menuItems.length > 0}
             <span class="ml-1 text-stone-300 dark:text-stone-600">|</span>
           {/if}
-          <span class="px-2 text-sm font-semibold text-stone-600 dark:text-stone-300"
+          <span class="px-2 text-sm font-medium text-stone-600 dark:text-stone-300"
             >{data.user.name}</span
           >
+          <!-- Primary button — premium gradient -->
           <a
             href="/admin"
-            class="rounded-full bg-forest-600 px-4 py-1.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-forest-700"
+            class="ml-1 rounded-full px-4 py-1.5 text-sm font-semibold text-white shadow-sm transition-all duration-[250ms] ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-px"
+            style="background: linear-gradient(135deg, #2ECC71, #27AE60); box-shadow: var(--shadow-card);"
+            onmouseover={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = 'var(--shadow-deep)')}
+            onfocus={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = 'var(--shadow-deep)')}
+            onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = 'var(--shadow-card)')}
+            onblur={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = 'var(--shadow-card)')}
           >
             Beheer
           </a>
           <form method="post" action="/auth/logout" class="ml-1">
             <button
               type="submit"
-              class="text-sm font-semibold text-stone-500 transition-colors hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
+              class="text-sm font-medium text-stone-500 transition-colors hover:text-stone-700 dark:text-stone-400 dark:hover:text-stone-200"
             >
               Uitloggen
             </button>
           </form>
         {:else if data.menuSettings.showLoginLink}
+          <!-- Secondary button — 2px border, forest-500 -->
           <a
             href="/auth/login"
-            class="ml-1 rounded-full border-2 border-forest-300 px-4 py-1.5 text-sm font-bold text-forest-700 transition-colors hover:bg-forest-50 dark:border-forest-600 dark:text-forest-300 dark:hover:bg-forest-800"
+            class="ml-1 rounded-full border-2 border-forest-500 px-4 py-1.5 text-sm font-semibold text-forest-600 transition-all duration-[250ms] hover:bg-forest-500 hover:text-white dark:border-forest-400 dark:text-forest-300 dark:hover:bg-forest-500 dark:hover:text-white"
           >
             Inloggen
           </a>
@@ -113,7 +120,7 @@
   <footer
     class="border-t border-forest-200 bg-white py-8 dark:border-forest-800 dark:bg-forest-950"
   >
-    <p class="text-center text-sm font-semibold text-stone-400 dark:text-stone-600">
+    <p class="text-center text-sm font-medium text-stone-400 dark:text-stone-600">
       Applicatie Hub &copy; {new Date().getFullYear()}
     </p>
   </footer>

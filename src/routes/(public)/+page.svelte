@@ -12,12 +12,20 @@
 
 <!-- ─── Nordic Forest Hero ─── -->
 <section
-  class="relative overflow-hidden bg-gradient-to-b from-forest-900 via-forest-800 to-forest-700 dark:from-slate-950 dark:via-forest-950 dark:to-forest-900"
+  class="relative overflow-hidden dark:bg-forest-950"
+  style="background: linear-gradient(to top, #0F3D2E, #145A32, #1E8449);"
 >
-  <!-- Atmospheric glow orbs -->
+  <!-- Light bloom overlay — radial warm highlight -->
+  <div
+    class="pointer-events-none absolute inset-0"
+    aria-hidden="true"
+    style="background: radial-gradient(circle at 70% 20%, rgba(255,255,200,0.15), transparent 60%);"
+  ></div>
+
+  <!-- Atmospheric depth orbs -->
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <div class="absolute left-1/4 top-10 h-72 w-72 rounded-full bg-mist-400/10 blur-3xl"></div>
-    <div class="absolute right-1/4 top-16 h-56 w-56 rounded-full bg-forest-300/10 blur-2xl"></div>
+    <div class="absolute right-1/4 top-16 h-56 w-56 rounded-full bg-sky-mist/5 blur-2xl"></div>
     <div
       class="absolute left-1/2 bottom-28 h-40 w-40 -translate-x-1/2 rounded-full bg-mist-300/15 blur-2xl"
     ></div>

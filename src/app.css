@@ -6,31 +6,40 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* Forest green palette — primary brand color */
-  --color-forest-50: oklch(0.97 0.02 145);
-  --color-forest-100: oklch(0.94 0.04 145);
-  --color-forest-200: oklch(0.87 0.07 145);
-  --color-forest-300: oklch(0.77 0.11 145);
-  --color-forest-400: oklch(0.65 0.15 145);
-  --color-forest-500: oklch(0.52 0.17 145);
-  --color-forest-600: oklch(0.43 0.15 145);
-  --color-forest-700: oklch(0.35 0.12 145);
-  --color-forest-800: oklch(0.26 0.09 145);
-  --color-forest-900: oklch(0.20 0.06 145);
-  --color-forest-950: oklch(0.13 0.04 145);
+  /* ── Forest Core — primary brand palette (Verdant design system) ── */
+  --color-forest-50:  #F2FBF4;
+  --color-forest-100: #DCEFDF;
+  --color-forest-200: #ABDBB1;
+  --color-forest-300: #6CC182;
+  --color-forest-400: #2ECC71;
+  --color-forest-500: #27AE60;
+  --color-forest-600: #1E8449;
+  --color-forest-700: #145A32;
+  --color-forest-800: #0F3D2E;
+  --color-forest-900: #0B2E22;
+  --color-forest-950: #061A12;
 
-  /* Bark / earth tones — accent */
-  --color-bark-50: oklch(0.97 0.01 60);
-  --color-bark-100: oklch(0.93 0.03 60);
-  --color-bark-200: oklch(0.85 0.05 60);
-  --color-bark-400: oklch(0.65 0.08 60);
-  --color-bark-600: oklch(0.46 0.08 60);
-  --color-bark-800: oklch(0.30 0.05 60);
-  --color-bark-900: oklch(0.22 0.04 60);
+  /* ── Lush Energy Accents ── */
+  --color-moss:      #6FAF5F;
+  --color-fern:      #4CAF50;
+  --color-sunlight:  #F4D03F;
+  --color-sky-mist:  #D4EFDF;
 
-  --font-sans: 'Nunito', system-ui, sans-serif;
+  /* ── Earth / Warmth ── */
+  --color-bark:  #6E3B1F;
+  --color-soil:  #8E5A2A;
+  --color-sand:  #C58C5A;
 
-  /* Mist palette — cool blue-gray, atmospheric depth */
+  /* ── Bark scale (admin badges) ── */
+  --color-bark-50:  oklch(0.97 0.01 50);
+  --color-bark-100: oklch(0.93 0.03 50);
+  --color-bark-200: oklch(0.85 0.06 50);
+  --color-bark-400: oklch(0.65 0.09 50);
+  --color-bark-600: oklch(0.46 0.10 50);
+  --color-bark-800: oklch(0.30 0.07 50);
+  --color-bark-900: oklch(0.22 0.05 50);
+
+  /* ── Mist palette — cool blue-gray, atmospheric depth ── */
   --color-mist-100: oklch(0.95 0.02 220);
   --color-mist-200: oklch(0.88 0.04 220);
   --color-mist-300: oklch(0.78 0.06 220);
@@ -38,6 +47,14 @@
   --color-mist-500: oklch(0.52 0.07 220);
   --color-mist-600: oklch(0.42 0.07 220);
   --color-mist-700: oklch(0.32 0.05 220);
+
+  /* ── Typography ── */
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* ── Shadows (Verdant elevation system) ── */
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.15);
+  --shadow-deep: 0 10px 25px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 25px rgba(255, 255, 255, 0.15);
 }
 
 /* highlight.js dark mode overrides (supplement github.css light theme) */
@@ -64,4 +81,10 @@ html {
 body {
   @apply bg-stone-50 text-stone-900 dark:bg-forest-950 dark:text-stone-100;
   font-family: var(--font-sans);
+}
+
+/* Focus ring — sunlight yellow, per Verdant accessibility guidelines */
+*:focus-visible {
+  outline: 2px solid #F4D03F;
+  outline-offset: 2px;
 }
