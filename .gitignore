@@ -1,0 +1,27 @@
+# SvelteKit
+.svelte-kit
+build
+
+# Node
+node_modules
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Data (Docker volumes — never commit these)
+data/
+uploads/
+
+# Living docs (gitignored intentionally — see CLAUDE.md)
+Architecture.md
+FunctionalDesign.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/
