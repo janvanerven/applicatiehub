@@ -1,6 +1,6 @@
 services:
   applicatiehub:
-    build: .
+    image: jvanerven/applicationhub:latest
     container_name: applicatiehub
     restart: unless-stopped
     ports:
@@ -8,9 +8,18 @@ services:
     volumes:
       - ./data:/app/data
       - ./uploads:/app/uploads
-    env_file:
-      - .env
     environment:
       NODE_ENV: production
+
+      # Public URL of this instance — no trailing slash.
+      # Must match the redirect URI registered in Authentik exactly.
+      ORIGIN: https://your-domain.com
+
+      # Authentik OAuth2/OIDC credentials
+      AUTHENTIK_CLIENT_ID: your-client-id
+      AUTHENTIK_CLIENT_SECRET: your-client-secret
+      AUTHENTIK_ISSUER_URL: https://authentik.your-domain.com/application/o/applicatiehub/
+
+      # Storage paths inside the container — do not change unless you remount the volumes
       DATABASE_URL: /app/data/db.sqlite
       UPLOAD_DIR: /app/uploads
