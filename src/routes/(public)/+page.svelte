@@ -10,117 +10,94 @@
   <meta name="description" content="Een overzicht van alle beschikbare applicaties." />
 </svelte:head>
 
-<!-- ─── Nordic Forest Hero ─── -->
+<!-- ─── Hero ─── -->
 <section
-  class="relative overflow-hidden dark:bg-forest-950"
-  style="background: linear-gradient(to top, #0F3D2E, #145A32, #1E8449);"
+  class="relative overflow-hidden"
+  style="background: linear-gradient(to bottom, #A9DFBA 0%, #27AE60 40%, #1E8449 75%, #145A32 100%);"
 >
-  <!-- Light bloom overlay — radial warm highlight -->
-  <div
-    class="pointer-events-none absolute inset-0"
-    aria-hidden="true"
-    style="background: radial-gradient(circle at 70% 20%, rgba(255,255,200,0.15), transparent 60%);"
-  ></div>
+  <!-- Content row -->
+  <div class="relative z-10 mx-auto max-w-7xl px-6 pb-56 pt-16 lg:flex lg:items-center lg:gap-8 lg:pb-60 lg:pt-20">
 
-  <!-- Atmospheric depth orbs -->
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-    <div class="absolute left-1/4 top-10 h-72 w-72 rounded-full bg-mist-400/10 blur-3xl"></div>
-    <div class="absolute right-1/4 top-16 h-56 w-56 rounded-full bg-sky-mist/5 blur-2xl"></div>
-    <div
-      class="absolute left-1/2 bottom-28 h-40 w-40 -translate-x-1/2 rounded-full bg-mist-300/15 blur-2xl"
-    ></div>
-  </div>
+    <!-- Left: text -->
+    <div class="lg:flex-1">
+      <!-- Tag pill -->
+      <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/25 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur-sm">
+        <span aria-hidden="true">🌿</span>
+        <span>Jouw digitale werkruimte</span>
+      </div>
 
-  <!-- Hero content -->
-  <div class="relative mx-auto max-w-4xl px-4 pb-44 pt-20 text-center">
-    <!-- Badge pill -->
-    <div
-      class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur-sm"
-    >
-      <span class="text-base" aria-hidden="true">🌲</span>
-      <span>Jouw digitale werkruimte</span>
+      <h1 class="text-5xl font-bold tracking-tight text-white drop-shadow sm:text-6xl lg:text-7xl">
+        Applicatie Hub
+      </h1>
+
+      <p class="mt-4 max-w-md text-lg text-white/85">
+        Alles wat je nodig hebt, op één plek.
+      </p>
+
+      {#if data.apps.length > 0}
+        <p class="mt-3 text-sm font-medium text-white/60">
+          {data.apps.length}
+          {data.apps.length === 1 ? 'applicatie' : 'applicaties'} beschikbaar
+        </p>
+      {/if}
     </div>
 
-    <h1 class="text-6xl font-black tracking-tight text-white drop-shadow-lg sm:text-8xl">
-      Applicatie Hub
-    </h1>
+    <!-- Right: mascot scene (lg and up) -->
+    <div class="relative hidden lg:block lg:w-80 lg:flex-none">
+      <!-- Bear mascot -->
+      <span
+        class="block select-none text-center leading-none"
+        style="font-size: 180px; filter: drop-shadow(0 16px 32px rgba(0,0,0,0.25));"
+        aria-hidden="true"
+      >🐻</span>
 
-    <p class="mx-auto mt-5 max-w-xl text-lg font-semibold text-forest-100/80">
-      Alles wat je nodig hebt, op één plek.
-    </p>
-
-    {#if data.apps.length > 0}
-      <p class="mt-2 text-sm text-forest-200/50">
-        {data.apps.length}
-        {data.apps.length === 1 ? 'applicatie' : 'applicaties'} beschikbaar
-      </p>
-    {/if}
+      <!-- Decorative accent animals & plants -->
+      <span class="absolute -top-6 left-4 select-none text-5xl" aria-hidden="true">🐦</span>
+      <span class="absolute right-2 top-10 select-none text-3xl" aria-hidden="true">🦋</span>
+      <span class="absolute bottom-12 left-0 select-none text-4xl" aria-hidden="true">🌸</span>
+      <span class="absolute bottom-8 right-6 select-none text-3xl" aria-hidden="true">🌺</span>
+      <span class="absolute -top-2 right-16 select-none text-2xl" aria-hidden="true">🍃</span>
+    </div>
   </div>
 
-  <!-- ─── Pine forest silhouette (3 depth layers) ─── -->
-  <div class="pointer-events-none absolute bottom-0 left-0 right-0" aria-hidden="true">
+  <!-- ─── Fixed-height tree silhouette — two depth layers ─── -->
+  <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-48" aria-hidden="true">
     <svg
-      viewBox="0 0 1440 200"
+      class="h-full w-full"
+      viewBox="0 0 1440 192"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
-      class="w-full"
     >
-      <!-- Layer 1: distant misty trees -->
-      <g style="fill: currentColor" class="text-forest-950/25 dark:text-mist-300/10">
-        <polygon points="40,200 80,148 120,200" />
-        <polygon points="110,200 160,132 210,200" />
-        <polygon points="250,200 290,145 330,200" />
-        <polygon points="380,200 425,135 470,200" />
-        <polygon points="510,200 560,140 610,200" />
-        <polygon points="650,200 700,132 750,200" />
-        <polygon points="790,200 840,142 890,200" />
-        <polygon points="930,200 980,135 1030,200" />
-        <polygon points="1070,200 1120,140 1170,200" />
-        <polygon points="1210,200 1265,132 1320,200" />
-        <polygon points="1360,200 1400,145 1440,200" />
+      <!-- Layer 1: distant trees — medium green, airy -->
+      <g fill="#1E8449" fill-opacity="0.55">
+        <polygon points="0,192 55,110 110,192"/>
+        <polygon points="130,192 195,95 260,192"/>
+        <polygon points="290,192 355,105 420,192"/>
+        <polygon points="450,192 515,98 580,192"/>
+        <polygon points="610,192 675,100 740,192"/>
+        <polygon points="770,192 835,95 900,192"/>
+        <polygon points="930,192 995,102 1060,192"/>
+        <polygon points="1090,192 1155,96 1220,192"/>
+        <polygon points="1250,192 1315,108 1380,192"/>
+        <polygon points="1390,192 1415,115 1440,192"/>
       </g>
 
-      <!-- Layer 2: mid-distance double-tier trees -->
-      <g style="fill: currentColor" class="text-forest-950/55 dark:text-forest-500/35">
-        <polygon points="20,200 75,90 130,200" />
-        <polygon points="42,155 75,58 108,155" />
-        <polygon points="230,200 295,80 360,200" />
-        <polygon points="253,155 295,48 337,155" />
-        <polygon points="460,200 525,85 590,200" />
-        <polygon points="483,155 525,52 567,155" />
-        <polygon points="680,200 745,78 810,200" />
-        <polygon points="703,155 745,46 787,155" />
-        <polygon points="910,200 975,82 1040,200" />
-        <polygon points="933,155 975,50 1017,155" />
-        <polygon points="1130,200 1200,78 1270,200" />
-        <polygon points="1154,155 1200,45 1246,155" />
-        <polygon points="1340,200 1400,88 1440,200" />
-        <polygon points="1363,156 1400,56 1437,156" />
-      </g>
-
-      <!-- Layer 3: foreground large triple-tier trees -->
-      <g style="fill: currentColor" class="text-forest-950 dark:text-forest-800">
-        <polygon points="0,200 55,45 110,200" />
-        <polygon points="18,158 55,18 92,158" />
-        <polygon points="30,112 55,2 80,112" />
-        <polygon points="170,200 250,38 330,200" />
-        <polygon points="192,158 250,10 308,158" />
-        <polygon points="210,110 250,0 290,110" />
-        <polygon points="410,200 500,42 590,200" />
-        <polygon points="432,158 500,14 568,158" />
-        <polygon points="450,112 500,2 550,112" />
-        <polygon points="650,200 740,35 830,200" />
-        <polygon points="672,158 740,8 808,158" />
-        <polygon points="692,110 740,0 788,110" />
-        <polygon points="890,200 980,42 1070,200" />
-        <polygon points="912,158 980,14 1048,158" />
-        <polygon points="930,112 980,2 1030,112" />
-        <polygon points="1120,200 1210,38 1300,200" />
-        <polygon points="1142,158 1210,10 1278,158" />
-        <polygon points="1160,110 1210,0 1260,110" />
-        <polygon points="1340,200 1420,48 1500,200" />
-        <polygon points="1362,158 1420,20 1478,158" />
-        <rect x="0" y="197" width="1440" height="3" />
+      <!-- Layer 2: foreground trees — dark, full depth -->
+      <g fill="#0B2E22">
+        <polygon points="0,192 65,45 130,192"/>
+        <polygon points="15,155 65,18 115,155"/>
+        <polygon points="185,192 270,38 355,192"/>
+        <polygon points="200,155 270,12 340,155"/>
+        <polygon points="410,192 500,40 590,192"/>
+        <polygon points="425,155 500,14 575,155"/>
+        <polygon points="640,192 730,35 820,192"/>
+        <polygon points="655,155 730,8 805,155"/>
+        <polygon points="870,192 960,42 1050,192"/>
+        <polygon points="885,155 960,15 1035,155"/>
+        <polygon points="1100,192 1190,38 1280,192"/>
+        <polygon points="1115,155 1190,12 1265,155"/>
+        <polygon points="1320,192 1400,48 1440,192"/>
+        <rect x="0" y="189" width="1440" height="3"/>
       </g>
     </svg>
   </div>
